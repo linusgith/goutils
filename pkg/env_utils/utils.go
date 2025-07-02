@@ -1,4 +1,4 @@
-package env_utils
+package goutils
 
 import (
 	"go.uber.org/zap"
