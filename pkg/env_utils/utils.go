@@ -88,7 +88,7 @@ func ParseEnvStringDefault(env string, defaultValue string, logger *zap.Logger) 
 // ParseEnvStringPanic returns the value of the environment variable 'env'.
 // If the variable is not set or is empty, it logs a panic with the provided logger.
 // Logs the variable name and value at debug level.
-func ParseEnvStringPanic(env string, defaultValue string, logger *zap.Logger) string {
+func ParseEnvStringPanic(env string, logger *zap.Logger) string {
 	envString := os.Getenv(env)
 
 	logger.Debug("got env variable", zap.String("variable", env), zap.String("value", envString))
