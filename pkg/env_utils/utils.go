@@ -11,13 +11,13 @@ import (
 
 type logStruct struct{}
 
-func Log() LogStruct {
+func Log() logStruct {
 	return logStruct{}
 }
 
 type noLogStruct struct{}
 
-func NoLog() NoLogStruct {
+func NoLog() noLogStruct {
 	return noLogStruct{}
 }
 
