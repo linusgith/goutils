@@ -24,7 +24,7 @@ func NoLog() noLogStruct {
 // ParseEnvDurationDefault returns the value of the environment variable 'env' parsed as a time.Duration.
 // If the variable is not set or cannot be parsed, it returns the provided durationDefault.
 // Logs a warning if parsing fails.
-func (l *Log) ParseEnvDurationDefault(env string, durationDefault time.Duration, logger *zap.Logger) time.Duration {
+func (l *logStruct) ParseEnvDurationDefault(env string, durationDefault time.Duration, logger *zap.Logger) time.Duration {
 
 	timeout := os.Getenv(env)
 
@@ -39,7 +39,7 @@ func (l *Log) ParseEnvDurationDefault(env string, durationDefault time.Duration,
 
 // ParseEnvDurationPanic returns the value of the environment variable 'env' parsed as a time.Duration.
 // If the variable is not set or cannot be parsed, it logs a panic with the provided logger.
-func (l *Log) ParseEnvDurationPanic(env string, logger *zap.Logger) time.Duration {
+func (l *logStruct) ParseEnvDurationPanic(env string, logger *zap.Logger) time.Duration {
 
 	timeout := os.Getenv(env)
 
@@ -54,7 +54,7 @@ func (l *Log) ParseEnvDurationPanic(env string, logger *zap.Logger) time.Duratio
 // ParseEnvIntDefault returns the value of the environment variable 'env' parsed as an int.
 // If the variable is not set or cannot be parsed, it returns the provided intDefault.
 // Logs a warning if parsing fails and logs the variable name and value at debug level.
-func (l *Log) ParseEnvIntDefault(env string, intDefault int, logger *zap.Logger) int {
+func (l *logStruct) ParseEnvIntDefault(env string, intDefault int, logger *zap.Logger) int {
 
 	intString := os.Getenv(env)
 
@@ -71,7 +71,7 @@ func (l *Log) ParseEnvIntDefault(env string, intDefault int, logger *zap.Logger)
 
 // ParseEnvIntPanic returns the value of the environment variable 'env' parsed as an int.
 // If the variable is not set or cannot be parsed, it logs a panic with the provided logger.
-func (l *Log) ParseEnvIntPanic(env string, logger *zap.Logger) int {
+func (l *logStruct) ParseEnvIntPanic(env string, logger *zap.Logger) int {
 
 	intString := os.Getenv(env)
 
@@ -86,7 +86,7 @@ func (l *Log) ParseEnvIntPanic(env string, logger *zap.Logger) int {
 // ParseEnvStringDefault returns the value of the environment variable 'env'.
 // If the variable is not set or is empty, it returns the provided defaultValue.
 // Logs the variable name and value at debug level.
-func (l *Log) ParseEnvStringDefault(env string, defaultValue string, logger *zap.Logger) string {
+func (l *logStruct) ParseEnvStringDefault(env string, defaultValue string, logger *zap.Logger) string {
 	envString := os.Getenv(env)
 
 	logger.Debug("got env variable", zap.String("variable", env), zap.String("value", envString))
@@ -102,7 +102,7 @@ func (l *Log) ParseEnvStringDefault(env string, defaultValue string, logger *zap
 // ParseEnvStringPanic returns the value of the environment variable 'env'.
 // If the variable is not set or is empty, it logs a panic with the provided logger.
 // Logs the variable name and value at debug level.
-func (l *Log) ParseEnvStringPanic(env string, logger *zap.Logger) string {
+func (l *logStruct) ParseEnvStringPanic(env string, logger *zap.Logger) string {
 	envString := os.Getenv(env)
 
 	logger.Debug("got env variable", zap.String("variable", env), zap.String("value", envString))
@@ -115,7 +115,7 @@ func (l *Log) ParseEnvStringPanic(env string, logger *zap.Logger) string {
 
 }
 
-func (NoLog) ParseEnvDurationDefault(env string, durationDefault time.Duration) time.Duration {
+func (noLogStruct) ParseEnvDurationDefault(env string, durationDefault time.Duration) time.Duration {
 
 	timeout := os.Getenv(env)
 
@@ -129,7 +129,7 @@ func (NoLog) ParseEnvDurationDefault(env string, durationDefault time.Duration) 
 
 // ParseEnvDurationPanic returns the value of the environment variable 'env' parsed as a time.Duration.
 // If the variable is not set or cannot be parsed, it logs a panic with the provided logger.
-func (NoLog) ParseEnvDurationPanic(env string) time.Duration {
+func (noLogStruct) ParseEnvDurationPanic(env string) time.Duration {
 
 	timeout := os.Getenv(env)
 
@@ -144,7 +144,7 @@ func (NoLog) ParseEnvDurationPanic(env string) time.Duration {
 // ParseEnvIntDefault returns the value of the environment variable 'env' parsed as an int.
 // If the variable is not set or cannot be parsed, it returns the provided intDefault.
 // Logs a warning if parsing fails and logs the variable name and value at debug level.
-func (NoLog) ParseEnvIntDefault(env string, intDefault int) int {
+func (noLogStruct) ParseEnvIntDefault(env string, intDefault int) int {
 
 	intString := os.Getenv(env)
 
@@ -158,7 +158,7 @@ func (NoLog) ParseEnvIntDefault(env string, intDefault int) int {
 
 // ParseEnvIntPanic returns the value of the environment variable 'env' parsed as an int.
 // If the variable is not set or cannot be parsed, it logs a panic with the provided logger.
-func (NoLog) ParseEnvIntPanic(env string) int {
+func (noLogStruct) ParseEnvIntPanic(env string) int {
 
 	intString := os.Getenv(env)
 
@@ -173,7 +173,7 @@ func (NoLog) ParseEnvIntPanic(env string) int {
 // ParseEnvStringDefault returns the value of the environment variable 'env'.
 // If the variable is not set or is empty, it returns the provided defaultValue.
 // Logs the variable name and value at debug level.
-func (NoLog) ParseEnvStringDefault(env string, defaultValue string) string {
+func (noLogStruct) ParseEnvStringDefault(env string, defaultValue string) string {
 	envString := os.Getenv(env)
 
 	if envString == "" {
@@ -187,7 +187,7 @@ func (NoLog) ParseEnvStringDefault(env string, defaultValue string) string {
 // ParseEnvStringPanic returns the value of the environment variable 'env'.
 // If the variable is not set or is empty, it logs a panic with the provided logger.
 // Logs the variable name and value at debug level.
-func (NoLog) ParseEnvStringPanic(env string) string {
+func (noLogStruct) ParseEnvStringPanic(env string) string {
 	envString := os.Getenv(env)
 
 	if envString == "" {
