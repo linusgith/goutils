@@ -9,9 +9,17 @@ import (
 	"time"
 )
 
-type Log struct{}
+type logStruct struct{}
 
-type NoLog struct{}
+func Log() LogStruct {
+	return logStruct{}
+}
+
+type noLogStruct struct{}
+
+func NoLog() NoLogStruct {
+	return noLogStruct{}
+}
 
 // ParseEnvDurationDefault returns the value of the environment variable 'env' parsed as a time.Duration.
 // If the variable is not set or cannot be parsed, it returns the provided durationDefault.
